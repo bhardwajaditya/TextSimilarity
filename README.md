@@ -28,6 +28,14 @@ $ python api.py
         "Which of the following is a fruit",
         "Which of the following is a vegetable"
     ],
-    "target": "Which of the following is not a ghost"
+    "target": "Which of the following is not a vegetable"
 }
+```
+
+### Sample Output
+
+```javascript
+[
+  "Which of the following is a vegetable"
+]
 ```
