@@ -19,3 +19,15 @@
 $ cd TextSimilarity
 $ python api.py
 ```
+
+### Sample Request
+
+```javascript
+{
+    "questions":[
+        "Which of the following is a fruit",
+        "Which of the following is a vegetable"
+    ],
+    "target": "Which of the following is not a ghost"
+}
+```
