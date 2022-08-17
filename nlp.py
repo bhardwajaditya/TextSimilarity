@@ -17,7 +17,7 @@ def getSimilarQuestion(questions, target):
     for index, value in enumerate(questions):
         print(value)
         minhash = MinHash(num_perm=128)
-        for gram in ngrams(value['text'], 3):
+        for gram in ngrams(value['question'], 3):
             minhash.update("".join(gram).encode('utf-8'))
         lsh.insert(index, minhash)
         minhashes[index] = minhash
