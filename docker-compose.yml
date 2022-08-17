@@ -2,7 +2,7 @@ version: "3.8"
 services:
   app:
     build: .
-    command: python app.py
+    command: waitress-serve --listen 0.0.0.0:8080 app:app
     ports:
       - "5001:8080"
     volumes:

@@ -1,11 +1,16 @@
 from datasketch import MinHash, MinHashLSH
 from nltk import ngrams
+import logging
+
+logger = logging.getLogger("Nlp")
+logger.setLevel(logging.INFO)
 
 def getSimilarQuestion(questions, target):
 
     # Create an MinHashLSH index optimized for Jaccard threshold 0.4,
     # that accepts MinHash objects with 128 permutations functions
     lsh = MinHashLSH(threshold=0.4, num_perm=128)
+    logger.info(" Finding similar questions for: {}".format(target))
 
     # Create MinHash objects
     minhashes = {}
@@ -24,6 +29,6 @@ def getSimilarQuestion(questions, target):
     minhashes[len(questions)] = minhash
 
     result = lsh.query(minhashes[len(questions)])
-    print("Candidates with Jaccard similarity > 0.4 for input", target, ":", result)
+    logger.info(" Candidates with Jaccard similarity > 0.4 for input " + target + ": " + str(result))
     result = [questions[i] for i in range(len(questions)) if i in result]
     return result

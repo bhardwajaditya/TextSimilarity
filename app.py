@@ -1,10 +1,13 @@
-import os
 from flask import Flask, jsonify, request,make_response
 from dotenv import load_dotenv
+import logging
 
 from nlp import getSimilarQuestion
 
 app = Flask(__name__)
+logger = logging.getLogger("Nlp")
+app.logger.handlers.extend(logger.handlers)
+app.logger.setLevel(logging.DEBUG)
 load_dotenv()
 
 @app.route('/api/similarity', methods=['POST'])
